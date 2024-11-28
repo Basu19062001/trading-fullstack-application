@@ -9,4 +9,8 @@ public class HomeController {
     public String home(){
         return "Welcome to Quester Trading Platform...";
     }
+    @GetMapping("/api")
+    public String secure(){
+        return "Welcome to Secure Trading Platform...";
+    }
 }
