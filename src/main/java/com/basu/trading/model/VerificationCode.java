@@ -13,7 +13,8 @@ public class VerificationCode {
 
     private String otp;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private  User user;
 
     private String email;

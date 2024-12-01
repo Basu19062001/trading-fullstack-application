@@ -4,9 +4,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Entity
+@Table(name = "coin")
 @Data
 public class Coin {
     @Id
@@ -71,7 +75,7 @@ public class Coin {
     private double athChangePercentage;
 
     @JsonProperty("ath_date")
-    private Data athDate; // Use String if you are not handling it as a LocalDateTime
+    private LocalDateTime athDate; // Use String if you are not handling it as a LocalDateTime
 
     @JsonProperty("atl")
     private double atl;
@@ -80,12 +84,12 @@ public class Coin {
     private double atlChangePercentage;
 
     @JsonProperty("atl_date")
-    private Data atlDate; // Use String if you are not handling it as a LocalDateTime
+    private LocalDateTime atlDate; // Use String if you are not handling it as a LocalDateTime
 
     @JsonProperty("roi")
     @JsonIgnore
     private String roi; // Nullable field
 
     @JsonProperty("last_updated")
-    private Data lastUpdated;
+    private LocalDateTime lastUpdated;
 }

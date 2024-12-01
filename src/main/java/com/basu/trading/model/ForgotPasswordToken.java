@@ -12,7 +12,8 @@ public class ForgotPasswordToken {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
     private String otp;
