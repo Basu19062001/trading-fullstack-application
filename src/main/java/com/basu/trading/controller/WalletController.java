@@ -55,7 +55,7 @@ public class WalletController {
         User user = userService.findUserProfileByJwt(jwt);
 
         Order order = orderService.getOrderById(orderId);
-        
+
         Wallet wallet = walletService.payOrderPayment(order,user);
 
         return new ResponseEntity<>(wallet, HttpStatus.ACCEPTED);
