@@ -1,10 +1,10 @@
 package com.basu.trading.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.basu.trading.domain.WithdrawalStatus;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -14,5 +14,13 @@ public class Withdrawal {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private WithdrawalStatus withdrawalStatus;
+
+    private Long amount;
+
+    @ManyToOne
+    private User user;
+
+    private LocalDateTime date = LocalDateTime.now();
 
 }
