@@ -25,13 +25,23 @@ public class PaymentServiceImpl implements PaymentService{
     private String apiSecretKey;
 
     @Override
-    public PaymentOrder createOrder(User user, Long amount, PaymentMethod paymentMethod) {
-        return null;
+    public PaymentOrder createOrder(User user,
+                                    Long amount,
+                                    PaymentMethod paymentMethod) {
+
+        PaymentOrder paymentOrder = new PaymentOrder();
+        paymentOrder.setUser(user);
+        paymentOrder.setAmount(amount);
+        paymentOrder.setPaymentMethod(paymentMethod);
+
+        return paymentOrderRepository.save(paymentOrder);
     }
 
     @Override
-    public PaymentOrder getPaymentOrderById(Long id) {
-        return null;
+    public PaymentOrder getPaymentOrderById(Long id) throws Exception {
+
+        return paymentOrderRepository.findById(id).orElseThrow(()->
+                new Exception("Payment order not found"));
     }
 
     @Override
