@@ -74,7 +74,7 @@ public class WithdrawalController {
 
         List<Withdrawal> withdrawal = withdrawalService.getAllWithdrawalRequest();
 
-        return new ResponseEntity<>(withdrawal, HttpStatus.OK);
+        return new ResponseEntity<>( withdrawal, HttpStatus.OK);
 
     }
 
