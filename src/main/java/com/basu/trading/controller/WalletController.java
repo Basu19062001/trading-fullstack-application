@@ -4,6 +4,7 @@ import com.basu.trading.model.Order;
 import com.basu.trading.model.User;
 import com.basu.trading.model.Wallet;
 import com.basu.trading.model.WalletTransaction;
+import com.basu.trading.service.OrderService;
 import com.basu.trading.service.UserService;
 import com.basu.trading.service.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,9 @@ public class WalletController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private OrderService orderService;
 
     @GetMapping("/api/wallet")
     public ResponseEntity<Wallet> getUserWallet(
