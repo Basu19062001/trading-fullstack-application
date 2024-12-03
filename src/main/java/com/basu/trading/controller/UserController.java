@@ -13,6 +13,10 @@ import com.basu.trading.service.ForgotPasswordService;
 import com.basu.trading.service.UserService;
 import com.basu.trading.service.VerificationCodeService;
 import com.basu.trading.utils.OtpUtils;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
+import io.jsonwebtoken.JwtException;
+import io.jsonwebtoken.Jwts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,11 +38,12 @@ public class UserController {
     @Autowired
     private ForgotPasswordService forgotPasswordService;
 
+
     @GetMapping("/api/users/profile")
-    public ResponseEntity<User> getUserProfile(@RequestHeader("Authentication") String jwt) throws Exception {
+    public ResponseEntity<User> getUserProfile(@RequestHeader("Authorization") String jwt) throws Exception {
         User user = userService.findUserProfileByJwt(jwt);
 
-        return new ResponseEntity<>(user, HttpStatus.OK);
+        return new ResponseEntity<User>(user, HttpStatus.OK);
     }
 
     @PostMapping("/api/users/verification/{verificationType}/send-otp")
