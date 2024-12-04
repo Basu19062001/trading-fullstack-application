@@ -25,6 +25,7 @@ public class WithdrawalController {
     @Autowired
     private UserService userService;
 
+    @PostMapping("/api/withdrawal/{amount}")
     public ResponseEntity<?> withdrawalRequest(
             @PathVariable Long amount,
             @RequestHeader("Authorization") String jwt

@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+
 @RestController
 public class WalletController {
     @Autowired
@@ -80,6 +82,9 @@ public class WalletController {
 
         Boolean status=paymentService.proceedPaymentOrder(order,paymentId);
 
+        if (wallet.getBalance()==null){
+            wallet.setBalance(BigDecimal.valueOf(0));
+        }
         if (status){
             wallet=walletService.addBalance(wallet,order.getAmount());
         }

@@ -17,7 +17,8 @@ public interface PaymentService {
                                 String paymentId) throws RazorpayException;
 
     PaymentResponse createRazorpayPaymentLine(User user,
-                                              Long amount) throws RazorpayException;
+                                              Long amount,
+                                              Long orderId) throws RazorpayException;
 
     PaymentResponse createStripePaymentLine(User user,
                                               Long amount,

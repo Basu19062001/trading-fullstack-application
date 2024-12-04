@@ -44,6 +44,7 @@ public class PaymentServiceImpl implements PaymentService{
         paymentOrder.setUser(user);
         paymentOrder.setAmount(amount);
         paymentOrder.setPaymentMethod(paymentMethod);
+        paymentOrder.setPaymentOrderStatus(PaymentOrderStatus.PENDING);
 
         return paymentOrderRepository.save(paymentOrder);
     }
@@ -57,6 +58,10 @@ public class PaymentServiceImpl implements PaymentService{
 
     @Override
     public boolean proceedPaymentOrder(PaymentOrder paymentOrder, String paymentId) throws RazorpayException {
+       if (paymentOrder.getPaymentOrderStatus()==null){
+           paymentOrder.setPaymentOrderStatus(PaymentOrderStatus.PENDING);
+       }
+
         if (paymentOrder.getPaymentOrderStatus().equals(PaymentOrderStatus.PENDING)){
             if (paymentOrder.getPaymentMethod().equals(PaymentMethod.RAZORPAY)){
                 RazorpayClient razorpay=new RazorpayClient(apiKey, apiSecretKey);
@@ -81,7 +86,9 @@ public class PaymentServiceImpl implements PaymentService{
     }
 
     @Override
-    public PaymentResponse createRazorpayPaymentLine(User user, Long amount) throws RazorpayException {
+    public PaymentResponse createRazorpayPaymentLine(User user,
+                                                     Long amount,
+                                                     Long orderId) throws RazorpayException {
 
         Long Amount = amount*500;
         try {
@@ -102,7 +109,7 @@ public class PaymentServiceImpl implements PaymentService{
 
             paymentLinkRequest.put("reminder_enable",true);
 
-            paymentLinkRequest.put("callback_url","http://localhost:5173/wallet");
+            paymentLinkRequest.put("callback_url","http://localhost:5173/wallet?order_id"+orderId);
             paymentLinkRequest.put("callback_method","get");
 
             PaymentLink payment=razorpay.paymentLink.create(paymentLinkRequest);
@@ -124,7 +131,8 @@ public class PaymentServiceImpl implements PaymentService{
 
     @Override
     public PaymentResponse createStripePaymentLine(User user,
-                                                   Long amount, Long orderId) throws StripeException {
+                                                   Long amount,
+                                                   Long orderId) throws StripeException {
         Stripe.apiKey = stripeSecretKey;
 
         SessionCreateParams params = SessionCreateParams.builder()
