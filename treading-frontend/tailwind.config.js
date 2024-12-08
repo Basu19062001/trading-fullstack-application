@@ -1,7 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 export default {
     darkMode: ["class"],
-    content: [],
+    content: [
+		'./src/**/*.{html,js,jsx,ts,tsx}'
+	],
   theme: {
   	extend: {
   		borderRadius: {
@@ -53,6 +55,7 @@ export default {
   		}
   	}
   },
+  // eslint-disable-next-line no-undef
   plugins: [require("tailwindcss-animate")],
 }
 
