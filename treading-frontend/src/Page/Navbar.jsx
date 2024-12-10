@@ -35,7 +35,8 @@ function Navbar() {
                 <div className="text-3xl flex justify-center items-center
                 gap-1">
                     <Avatar>
-                      <AvatarImage src="https://cdn.pixabay.com/photo/2015/08/27/11/20/bitcoin-910307_1280.png"/>
+                      <AvatarImage 
+                      src="https://cdn.pixabay.com/photo/2015/08/27/11/20/bitcoin-910307_1280.png"/>
                     </Avatar>
                     <div>
                       <span className="font-bold text-orange-700" >Quester</span>
@@ -62,7 +63,7 @@ function Navbar() {
       <div>
         <Avatar>
           <AvatarFallback>
-            Q
+            Q 
           </AvatarFallback>
         </Avatar>
       </div>
