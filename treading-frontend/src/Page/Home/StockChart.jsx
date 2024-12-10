@@ -1,8 +1,39 @@
-import { data } from "autoprefixer";
-import React from "react";
+/* eslint-disable no-unused-vars */
+import { Button } from "@/components/ui/button";
+import React, { useState } from "react";
 import ReactApexChart from "react-apexcharts";
 
+const timeSeries = [
+  {
+    keyword:"DIGITAL_CURRENCY_DAILY",
+    key:"Time Series (Daily)",
+    lable:"1 Day",
+    value: 1,
+  },
+  {
+    keyword:"DIGITAL_CURRENCY_DAILY",
+    key:"Weekly Time Series",
+    lable:"1 Week",
+    value: 7,
+  },
+  {
+    keyword:"DIGITAL_CURRENCY_DAILY",
+    key:"Monthly Time Series",
+    lable:"1 Month",
+    value: 30,
+  },
+  // {
+  //   keyword:"DIGITAL_CURRENCY_DAILY",
+  //   key:"Yearly Time Series",
+  //   lable:"1 year",
+  //   value: 365,
+  // }
+];
+
 const StockChart = () => {
+  
+  const [activeLable,setActiveLable] = useState("1 Day");
+
   const searies = [
     {
       data: [
@@ -97,8 +128,29 @@ const StockChart = () => {
     }
   }
 
+  const handleActiveLable=(value)=>{
+    setActiveLable(value);
+  }
+
   return(
     <div>
+
+      <div className="space-x-3">
+        {
+          timeSeries.map(
+            (item)=> 
+            <Button 
+            variant={activeLable==item.lable?"":"outline"}
+            onClick={()=>handleActiveLable(item.lable)}
+            key={item.lable}
+            >
+              {item.lable}
+            </Button> 
+            
+          )
+        }
+      </div>
+
       <div id="chart-timelines">
         <ReactApexChart
           options={options}
