@@ -27,7 +27,7 @@ function AssetTable() {
       <TableBody>
         {[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1].map((item, index) => (
           <TableRow key={index}>
-            <TableCell className="font-medium flex items-center gap-2">
+            <TableCell className="font-medium flex items-center gap-2 ">
               <Avatar className="-z-50">
                 <AvatarImage
                   src="https://cdn.pixabay.com/photo/2015/08/27/11/20/bitcoin-910307_1280.png"

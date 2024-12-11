@@ -94,6 +94,28 @@ function Home() {
               <Cross1Icon />
             </Button>
           </div>
+
+          <div className="h-[76%] flex flex-col overflow-y-auto gap-5 px-2 scroll-container">
+            <div className="self-start pb-5 w-auto">
+              <div className="justify-end self-end px-5 py-2 rounded-md bg-slate-800 w-auto">
+                <p>Hi, Quester</p>
+                <p>you can ask crypto related any question</p>
+                <p>like, price, market cap, etc...</p>
+              </div>
+            </div>
+
+            <div className="self-start pb-5 w-auto">
+              <div className="justify-end self-end px-5 py-2 rounded-md bg-slate-800 w-auto">
+                <p>Prompt who are you</p>
+              </div>
+            </div>
+
+            <div className="self-start pb-5 w-auto">
+              <div className="justify-end self-end px-5 py-2 rounded-md bg-slate-800 w-auto">
+                <p>Ans Quester</p>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="relative w-[10rem] cursor-pointer group">
