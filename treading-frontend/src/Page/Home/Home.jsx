@@ -104,17 +104,22 @@ function Home() {
               </div>
             </div>
 
-            <div className="self-start pb-5 w-auto">
-              <div className="justify-end self-end px-5 py-2 rounded-md bg-slate-800 w-auto">
-                <p>Prompt who are you</p>
-              </div>
-            </div>
+            {[1, 1, 1, 1, 1, 1, 1].map((item, index) => (
+              <div
+                key={index}
+                className={` ${
+                  index % 2 == 0 ? "self-start" : "self-end"
+                } "pb-5 w-auto"`}
+              >
+                <div className="justify-end self-end px-5 py-2 rounded-md bg-slate-800 w-auto">
+                  <p>Prompt who are you</p>
+                </div>
 
-            <div className="self-start pb-5 w-auto">
-              <div className="justify-end self-end px-5 py-2 rounded-md bg-slate-800 w-auto">
-                <p>Ans Quester</p>
+                <div className="justify-end self-end px-5 py-2 rounded-md bg-slate-800 w-auto">
+                  <p>Ans Quester</p>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
 
