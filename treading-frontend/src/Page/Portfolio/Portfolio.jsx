@@ -17,6 +17,7 @@ const Portfolio = () => {
       // style={{ maxHeight: "740px", overflowY: "auto" }}
       className="p-5 lg:p-20"
     >
+      <h1 className="font-bold text-3xl pb-5">Portfolio</h1>
       <Table>
         <TableHeader>
           <TableRow>
