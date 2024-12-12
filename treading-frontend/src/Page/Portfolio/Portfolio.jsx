@@ -18,10 +18,10 @@ const Portfolio = () => {
       className="p-5 lg:p-20"
     >
       <h1 className="font-bold text-3xl pb-5">Portfolio</h1>
-      <Table>
+      <Table className="border">
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[100px]">ASSET</TableHead>
+            <TableHead className="w-[100px] py-5">ASSET</TableHead>
             <TableHead>PRICE</TableHead>
             <TableHead>UNIT</TableHead>
             <TableHead>CHANGE</TableHead>
