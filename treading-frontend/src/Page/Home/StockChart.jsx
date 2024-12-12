@@ -5,21 +5,21 @@ import ReactApexChart from "react-apexcharts";
 
 const timeSeries = [
   {
-    keyword:"DIGITAL_CURRENCY_DAILY",
-    key:"Time Series (Daily)",
-    lable:"1 Day",
+    keyword: "DIGITAL_CURRENCY_DAILY",
+    key: "Time Series (Daily)",
+    lable: "1 Day",
     value: 1,
   },
   {
-    keyword:"DIGITAL_CURRENCY_DAILY",
-    key:"Weekly Time Series",
-    lable:"1 Week",
+    keyword: "DIGITAL_CURRENCY_DAILY",
+    key: "Weekly Time Series",
+    lable: "1 Week",
     value: 7,
   },
   {
-    keyword:"DIGITAL_CURRENCY_DAILY",
-    key:"Monthly Time Series",
-    lable:"1 Month",
+    keyword: "DIGITAL_CURRENCY_DAILY",
+    key: "Monthly Time Series",
+    lable: "1 Month",
     value: 30,
   },
   // {
@@ -31,8 +31,7 @@ const timeSeries = [
 ];
 
 const StockChart = () => {
-  
-  const [activeLable,setActiveLable] = useState("1 Day");
+  const [activeLable, setActiveLable] = useState("1 Day");
 
   const searies = [
     {
@@ -85,70 +84,65 @@ const StockChart = () => {
     },
   ];
 
-  const options ={
-    chart:{
-      id:"area-datetime",
-      type:"area",
-      height:450,
-      zoom:{
-        autoScaleYaxis:true
-      }
+  const options = {
+    chart: {
+      id: "area-datetime",
+      type: "area",
+      height: 450,
+      zoom: {
+        autoScaleYaxis: true,
+      },
     },
-    dataLabels:{
-      enabled:false
+    dataLabels: {
+      enabled: false,
     },
-    xaxis:{
-      type:"datetime",
-      tickAmount:6
+    xaxis: {
+      type: "datetime",
+      tickAmount: 6,
     },
     // colors:["#758AA2"],
-    markers:{
-      colors:["#fff"],
-      strokeColor:"#fff",
-      size:0,
-      strokeWidth:1,
-      style:"hollow"
+    markers: {
+      colors: ["#fff"],
+      strokeColor: "#fff",
+      size: 0,
+      strokeWidth: 1,
+      style: "hollow",
     },
-    tooltip:{
-      theme:"dark"
+    tooltip: {
+      theme: "dark",
     },
-    fill:{
-      type:"gradient",
-      gradient:{
-        shadeIntensity:1,
-        opacityFrom:0.6,
-        opacityTo:0.9,
-        stops:[0,100]
-      }
+    fill: {
+      type: "gradient",
+      gradient: {
+        shadeIntensity: 1,
+        opacityFrom: 0.6,
+        opacityTo: 0.9,
+        stops: [0, 100],
+      },
     },
-    grid:{
-      borderColor:"#47535E",
-      strokeDashArray:4,
-      show:true
-    }
-  }
+    grid: {
+      borderColor: "#47535E",
+      strokeDashArray: 4,
+      show: true,
+    },
+  };
 
-  const handleActiveLable=(value)=>{
+  const handleActiveLable = (value) => {
     setActiveLable(value);
-  }
+  };
 
-  return(
+  return (
     <div>
-
       <div className="space-x-3">
-        {
-          timeSeries.map(
-            (item)=> 
-            <Button 
-            variant={activeLable==item.lable?"":"outline"}
-            onClick={()=>handleActiveLable(item.lable)}
+        {timeSeries.map((item) => (
+          <Button
+            variant={activeLable == item.lable ? "" : "outline"}
+            onClick={() => handleActiveLable(item.lable)}
             key={item.lable}
-            >
-              {item.lable}
-            </Button> 
-            
-          )
-        }
+          >
+            {item.lable}
+          </Button>
+        ))}
       </div>
 
       <div id="chart-timelines">
@@ -160,8 +154,7 @@ const StockChart = () => {
         />
       </div>
     </div>
-  ); 
-  
+  );
 };
 
 export default StockChart;
