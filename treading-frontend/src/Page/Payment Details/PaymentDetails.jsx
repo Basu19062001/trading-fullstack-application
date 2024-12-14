@@ -42,7 +42,7 @@ const PaymentDetails = () => {
 
       <Dialog>
         <DialogTrigger>
-          <Button className="py-6">Add payment datails</Button>
+          <Button className="mt-5 py-6">Add payment datails</Button>
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
