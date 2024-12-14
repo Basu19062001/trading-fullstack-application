@@ -101,7 +101,7 @@ function Home() {
         </div>
       </div>
 
-      <section className="absolute bottom-5 right-5 z-40 flex flex-col justify-end items-end gap-2">
+      <section className="fixed bottom-5 right-5 z-40 flex flex-col justify-end items-end gap-2">
         {isBotRealease && (
           <div className="rounded-md w-[20rem] md:w-[25rem] lg:w-[25rem] h-[70vh] bg-slate-900">
             <div className="flex justify-between items-center border-b px-6 h-[12%]">
