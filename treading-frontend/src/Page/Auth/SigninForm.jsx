@@ -8,10 +8,13 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { login } from "@/State/Auth/Action";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 
 const SigninForm = () => {
+  const dispatch = useDispatch();
   const form = useForm({
     resolver: "",
     defaultValues: {
@@ -21,6 +24,7 @@ const SigninForm = () => {
   });
 
   const onSubmit = (data) => {
+    dispatch(login(data));
     console.log(data);
   };
   return (
