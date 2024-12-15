@@ -12,9 +12,12 @@ import { login } from "@/State/Auth/Action";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
 
 const SigninForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const form = useForm({
     resolver: "",
     defaultValues: {
@@ -24,7 +27,7 @@ const SigninForm = () => {
   });
 
   const onSubmit = (data) => {
-    dispatch(login(data));
+    dispatch(login({ data, navigate }));
     console.log(data);
   };
   return (

@@ -15,8 +15,12 @@ import {
 import React from "react";
 import Sidebar from "./Sidebar";
 import { useNavigate } from "react-router";
+import { useSelector } from "react-redux";
+import { store } from "@/State/Store";
 
 function Navbar() {
+  const { auth } = useSelector((store) => store);
+
   const navigate = useNavigate();
   return (
     <div
@@ -62,6 +66,7 @@ function Navbar() {
           className="text-sm lg:text-base cursor-pointer"
         >
           Quester Treading
+          {/* {auth.user.fullName} */}
         </p>
         <div className="p-0 ml-9">
           <Button variant="outline" className="flex items-center gap-3">
@@ -72,7 +77,7 @@ function Navbar() {
       </div>
       <div>
         <Avatar>
-          <AvatarFallback>Q</AvatarFallback>
+          <AvatarFallback>{auth.user.fullName[0].toUpperCase()}</AvatarFallback>
         </Avatar>
       </div>
     </div>

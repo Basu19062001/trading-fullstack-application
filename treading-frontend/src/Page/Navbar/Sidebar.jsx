@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { Button } from "@/components/ui/button";
 import { SheetClose } from "@/components/ui/sheet";
+import { logout } from "@/State/Auth/Action";
 import {
   ActivityLogIcon,
   DashboardIcon,
@@ -16,6 +17,7 @@ import {
 } from "lucide-react";
 import path from "path";
 import React from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 
 const menu = [
@@ -76,6 +78,12 @@ const menu = [
 
 const Sidebar = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleLoguot = () => {
+    dispatch(logout());
+  };
+
   return (
     <div className="mt-10 space-y-5">
       {menu.map((item) => (
@@ -84,7 +92,12 @@ const Sidebar = () => {
             <Button
               variant="outline"
               className="flex gap-5 py-6 w-full"
-              onClick={() => navigate(item.path)}
+              onClick={() => {
+                navigate(item.path);
+                if (item.name == "Logout") {
+                  handleLoguot();
+                }
+              }}
             >
               <span className="w-8">{item.icon}</span>
               <p>{item.name}</p>
