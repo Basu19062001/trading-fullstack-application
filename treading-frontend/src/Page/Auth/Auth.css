@@ -7,3 +7,7 @@
   background-position: center;
 
 }
+
+.bgBlur{
+  backdrop-filter: blur(7px);
+}
