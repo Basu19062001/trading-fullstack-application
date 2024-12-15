@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {

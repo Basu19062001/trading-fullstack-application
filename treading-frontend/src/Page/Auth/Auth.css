@@ -1,0 +1,9 @@
+.authContainer{
+  background-image: url("https://s3.tradingview.com/news/image/tradingview:c646b7cc0094b-5391c05e818d390130531c247a71b296-resized.jpeg");
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+}

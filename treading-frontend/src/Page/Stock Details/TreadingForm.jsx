@@ -1,8 +1,8 @@
+/* eslint-disable no-unused-vars */
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Half1Icon } from "@radix-ui/react-icons";
-import { DotIcon, Flashlight } from "lucide-react";
+import { DotIcon } from "lucide-react";
 import React, { useState } from "react";
 
 const TreadingForm = () => {
