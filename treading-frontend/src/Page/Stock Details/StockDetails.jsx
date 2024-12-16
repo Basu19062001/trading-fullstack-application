@@ -10,11 +10,25 @@ import {
 } from "@/components/ui/dialog";
 import { BookmarkFilledIcon, DotIcon } from "@radix-ui/react-icons";
 import { BookmarkIcon } from "lucide-react";
-import React from "react";
+import React, { useEffect } from "react";
 import TreadingForm from "./TreadingForm";
 import StockChart from "../Home/StockChart";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router";
+import { fetchCoinDetails } from "@/State/Coin/Action";
+import { store } from "@/State/Store";
 
 const StockDetails = () => {
+  const { coin } = useSelector((store) => store);
+  const dispatch = useDispatch();
+  const { id } = useParams();
+
+  useEffect(() => {
+    dispatch(
+      fetchCoinDetails({ coinId: id, jwt: localStorage.getItem("jwt") })
+    );
+  }, [id]);
+
   return (
     <div className="p-5 mt-5">
       <div className="flex justify-between">

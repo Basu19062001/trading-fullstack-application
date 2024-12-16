@@ -1,16 +1,23 @@
 import { Button } from "@/components/ui/button";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AssetTable from "./AssetTable";
 import StockChart from "./StockChart";
 import { Avatar, AvatarImage } from "@radix-ui/react-avatar";
 import { DotIcon, MessageCircle } from "lucide-react";
 import { Cross1Icon } from "@radix-ui/react-icons";
 import { Input } from "@/components/ui/input";
+import { useDispatch, useSelector } from "react-redux";
+import { getCoinList } from "@/State/Coin/Action";
+import Loading from "../Loading/Loading";
 
 function Home() {
   const [category, setCategory] = React.useState("all");
   const [inputValue, setInputValue] = React.useState("");
   const [isBotRealease, setIsBotRealease] = React.useState(false);
+  const dispatch = useDispatch();
+  const { coin } = useSelector((store) => store);
+  const { coinList, loading, error } = useSelector((store) => store.coin);
+  // const [load, setLoad] = useState(true);
 
   const handleBotRealease = () => setIsBotRealease(!isBotRealease);
 
@@ -28,6 +35,20 @@ function Home() {
     }
     setInputValue("");
   };
+
+  useEffect(() => {
+    dispatch(getCoinList(1));
+  }, [dispatch]);
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setLoad(false); // Simulate loading for 3 seconds
+  //   }, 3000);
+  // }, []);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+
   return (
     <div className="relative">
       <div className="lg:flex">
@@ -66,7 +87,7 @@ function Home() {
             </Button>
           </div>
 
-          <AssetTable />
+          <AssetTable coin={coinList} />
         </div>
         <div className="hidden lg:block lg:w-[50%] p-5">
           <StockChart />

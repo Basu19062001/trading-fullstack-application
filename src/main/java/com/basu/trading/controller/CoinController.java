@@ -22,10 +22,16 @@ public class CoinController {
 
     @GetMapping
     ResponseEntity<List<Coin>> getCoinList(@RequestParam(
-            required = false,
+            required = false, defaultValue = "0",
             name = "page") int page) throws Exception {
-        List<Coin> coins = coinService.getCoinList(page);
-        return new ResponseEntity<>(coins, HttpStatus.ACCEPTED);
+//        List<Coin> coins = coinService.getCoinList(page);
+//        return new ResponseEntity<>(coins, HttpStatus.ACCEPTED);
+        try {
+            List<Coin> coins = coinService.getCoinList(page);
+            return new ResponseEntity<>(coins, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping("/{coinId}/chart")
