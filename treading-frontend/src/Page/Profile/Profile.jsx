@@ -12,8 +12,11 @@ import {
 import { VerifiedIcon } from "lucide-react";
 import React from "react";
 import AccountVerificationForm from "./AccountVerificationForm";
+import { useSelector } from "react-redux";
 
 const Profile = () => {
+  const { auth } = useSelector((store) => store);
+
   const handleEnableTwoStepVerification = () => {
     console.log("Two step verification");
   };
@@ -30,12 +33,12 @@ const Profile = () => {
               <div className="space-y-7">
                 <div className="flex">
                   <p className="w-[9rem]">Email : </p>
-                  <p className="text-gray-500">test@gmail.com</p>
+                  <p className="text-gray-500">{auth.user?.email}</p>
                 </div>
 
                 <div className="flex">
                   <p className="w-[9rem]">Full Name : </p>
-                  <p className="text-gray-500">Quester</p>
+                  <p className="text-gray-500">{auth.user?.fullName}r</p>
                 </div>
 
                 <div className="flex">
